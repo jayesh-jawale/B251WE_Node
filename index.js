@@ -78,7 +78,12 @@ async function createConnection() {
 
 const client = await createConnection();
 
-const PORT = 9000
+// const PORT = 9000
+const PORT = process.env.PORT;
+
+app.get('/', (req, res) => {
+  res.send("Hi there! My name is Jayesh");
+});
 
 // Get Movies by Rating
 app.get('/movies', async(req, res) => {

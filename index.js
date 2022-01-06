@@ -128,14 +128,13 @@ app.post('/movies', express.json(), async(req, res) => {
 
 // Update movies
 // app.put('/movies/:id', async(req, res) => {
-//   const { id } = req.params
+//   const params = req.params
 //   const data = req.body;
 
-//   console.log(data);
 //   const updateMovies = await client
 //                       .db("test")
 //                       .collection("movies")
-//                       .updateOne({ id: id }, {$set : {rating: +rating}});
+//                       .updateOne(params, {$set:data});
 
 //   res.send(updateMovies);
 // })

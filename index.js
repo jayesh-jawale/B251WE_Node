@@ -5,6 +5,8 @@ import express from "express";  //type: "module"
 import {MongoClient} from "mongodb";  //type: "module"
 import dotenv from "dotenv";
 import { moviesRouter } from "./movies.js";
+import { userRouter } from "./users.js";
+import bcrypt from "bcrypt";
 
 dotenv.config(); // getting all env keys
 
@@ -25,7 +27,6 @@ async function createConnection() {
   console.log("Mongo DB Connected");
   return client;
 }
-
 export const client = await createConnection();
 
 // const PORT = 9000
@@ -36,5 +37,7 @@ app.get('/', (req, res) => {
 });
 
 app.use("/movies", moviesRouter);
+
+app.use("/users", userRouter);
 
 app.listen(PORT, () => console.log('Started'))

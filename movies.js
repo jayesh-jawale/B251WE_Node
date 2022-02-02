@@ -2,6 +2,7 @@ import express from "express";
 import { getMoviesByID, getMoviesByRating, createMovies, updateMovie, deleteMovieByIDAndName, deleteMovieByID }
  from "./helper.js";
  import { auth } from "./middleware/auth.js";
+ import jwt from "jsonwebtoken";
 
 const router = express.Router();
 

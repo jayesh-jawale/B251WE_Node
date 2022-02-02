@@ -1,11 +1,12 @@
 import express from "express";
 import { getMoviesByID, getMoviesByRating, createMovies, updateMovie, deleteMovieByIDAndName, deleteMovieByID }
  from "./helper.js";
+ import { auth } from "./middleware/auth.js";
 
 const router = express.Router();
 
 // Get Movies by Rating
-router.get('/', async(req, res) => {
+router.route('/').get(auth, async(req, res) => {
     const filter = req.query;
     if(filter.rating) {
       filter.rating = +filter.rating;
@@ -17,7 +18,7 @@ router.get('/', async(req, res) => {
   })
   
   // Get movies by Id
-router.get('/:id', async (req, res) => {
+router.route('/:id').get(auth, async (req, res) => {
     const { id } = req.params;
     const movie = await getMoviesByID(id)
   

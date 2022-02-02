@@ -30,6 +30,13 @@ import bcrypt from "bcrypt";
       .insertOne(data);
   }
 
+  async function getUserByName(username) {
+    return await client
+    .db("test")
+    .collection("users")
+    .findOne({username : username});
+  }
+
   async function genPassword(password) {
     const salt = await bcrypt.genSalt(10);
     console.log(salt);
@@ -60,4 +67,5 @@ import bcrypt from "bcrypt";
   }
 
   export {getMoviesByID, getMoviesByRating, createMovies,
-     updateMovie, deleteMovieByIDAndName, deleteMovieByID, createUser, genPassword}
+     updateMovie, deleteMovieByIDAndName, deleteMovieByID, createUser, genPassword,
+    getUserByName}

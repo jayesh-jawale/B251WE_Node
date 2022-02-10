@@ -7,10 +7,12 @@ import dotenv from "dotenv";
 import { moviesRouter } from "./movies.js";
 import { userRouter } from "./users.js";
 import bcrypt from "bcrypt";
+import cors from "cors";
 
 dotenv.config(); // getting all env keys
 
 const app = express();    // Alternative to express  - hapi
+app.use(cors());
 
 //  app.use -> Intercept every request
  app.use(express.json()); // Every request in body is parsed as JSON

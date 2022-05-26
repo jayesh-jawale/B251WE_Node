@@ -7,7 +7,7 @@ import { getMoviesByID, getMoviesByRating, createMovies, updateMovie, deleteMovi
 const router = express.Router();
 
 // Get Movies by Rating
-router.route('/').get(auth, async(req, res) => {
+router.route('/').get(async(req, res) => {
     const filter = req.query;
     if(filter.rating) {
       filter.rating = +filter.rating;
@@ -19,7 +19,7 @@ router.route('/').get(auth, async(req, res) => {
   })
   
   // Get movies by Id
-router.route('/:id').get(auth, async (req, res) => {
+router.route('/:id').get(async (req, res) => {
     const { id } = req.params;
     const movie = await getMoviesByID(id)
   
